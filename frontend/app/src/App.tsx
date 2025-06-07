@@ -1,18 +1,25 @@
-// src/App.tsx
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import SelectionTop from './SelectionTop';
 import Transition1 from './Transition1';
 
+function Home() {
+  const navigate = useNavigate();
+
+  return (
+    <>
+      <h1>タイパ重視（仮）</h1>
+      <button onClick={() => navigate('/selection')}>開始</button>
+    </>
+  );
+}
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SelectionTop />} />
-        <Route path="/transition1" element={<Transition1 />} />
-        {/* 他にもページがあればここに追加 */}
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/selection" element={<SelectionTop />} />
+      <Route path="/transition1" element={<Transition1 />} />
+    </Routes>
   );
 }
 
