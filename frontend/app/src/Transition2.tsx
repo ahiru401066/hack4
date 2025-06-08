@@ -3,22 +3,29 @@ import { useLocation } from 'react-router-dom';
 
 const Transition2 = () => {
   const location = useLocation();
-  const selectedName = location.state?.selectedName as string | undefined;
+  const selectedSubcategory = location.state?.selectedSubcategory as string | undefined;
 
   const [timeLeft, setTimeLeft] = useState(10); // 10秒カウントダウン
   const [selected, setSelected] = useState<string | null>(null);
 
-  // 例: 中華料理のサブカテゴリー
-  const options = ['ラーメン', 'チャーハン', '餃子', '麻婆豆腐'];
+  const options = ['ラーメン', 'チャーハン', '餃子', '麻婆豆腐']; // 仮データ
 
   useEffect(() => {
-    if (timeLeft > 0) {
+    if (timeLeft > 0 && !selected) {
       const timer = setTimeout(() => setTimeLeft(prev => prev - 1), 1000);
       return () => clearTimeout(timer);
     }
-  }, [timeLeft]);
+
+    if (timeLeft === 0 && !selected && options.length > 0) {
+      const randomIndex = Math.floor(Math.random() * options.length);
+      const randomChoice = options[randomIndex];
+      setSelected(randomChoice);
+      alert(`${randomChoice} を自動で選びました！`);
+    }
+  }, [timeLeft, selected, options]);
 
   const handleSelect = (option: string) => {
+    if (selected) return;
     setSelected(option);
     alert(`${option} を選びました！`);
   };
@@ -26,13 +33,13 @@ const Transition2 = () => {
   return (
     <div>
       <h1>AIによる提案</h1>
-      <p>{selectedName ? `${selectedName}の中から選んでください` : '中華料理の中から選んでください'}</p>
+      <p>{selectedSubcategory ? `${selectedSubcategory}の中から選んでください` : '料理の中から選んでください'}</p>
       <p>残り時間: {timeLeft} 秒</p>
 
       <ul>
         {options.map(option => (
           <li key={option}>
-            <button onClick={() => handleSelect(option)}>
+            <button onClick={() => handleSelect(option)} disabled={!!selected}>
               {option}
             </button>
           </li>

@@ -34,7 +34,7 @@ const SelectionTop = () => {
 
   return (
     <div>
-      <h1>選択画面</h1>
+      <h1>さっさと決めちゃおう！</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {categories.map((category) => (
         <button
