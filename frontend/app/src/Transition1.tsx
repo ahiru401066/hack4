@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import './Transition1.css';
 
 type Category = {
   id: number;
@@ -46,8 +47,8 @@ const Transition1 = () => {
   };
 
   return (
-    <div>
-      <h1>{selectedName} の選択</h1>
+    <div className="center-container">
+      <h1 className="category-h1">{selectedName} の選択</h1>
       {error && <p>{error}</p>}
       {childCategories.length > 0 ? (
         <div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './SelectionTop.css'; 
 
 type Category = {
   id: number;
@@ -33,11 +34,13 @@ const SelectionTop = () => {
   };
 
   return (
-    <div>
-      <h1>さっさと決めちゃおう！</h1>
+    <div className="center-container">
+      <h1 className="category-h1">さっさと決めちゃおう！</h1>
       {error && <p style={{ color: 'red' }}>{error}</p>}
+      <div className="button-container">
       {categories.map((category) => (
         <button
+          className="category-button"
           key={category.id}
           onClick={() => handleClick(category.name)}
           style={{ margin: '10px', padding: '10px', fontSize: '16px' }}
@@ -45,6 +48,7 @@ const SelectionTop = () => {
           {category.name}
         </button>
       ))}
+      </div>
     </div>
   );
 };

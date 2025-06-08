@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import './Transition2.css'; 
 
 const Transition2 = () => {
   const location = useLocation();
@@ -8,7 +9,7 @@ const Transition2 = () => {
   const [timeLeft, setTimeLeft] = useState(10); // 10秒カウントダウン
   const [selected, setSelected] = useState<string | null>(null);
 
-  const options = ['ラーメン', 'チャーハン', '餃子', '麻婆豆腐']; // 仮データ
+  const options = ['ラーメン', 'コンビニ', 'お惣菜', '松屋']; // 仮データ
 
   useEffect(() => {
     if (timeLeft > 0 && !selected) {
@@ -31,20 +32,22 @@ const Transition2 = () => {
   };
 
   return (
-    <div>
-      <h1>チョイス！！！</h1>
-      <p>{selectedSubcategory ? `${selectedSubcategory}の中から選んでください` : '料理の中から選んでください'}</p>
+    <div className="center-container">
+      <h1 className="category-h1">チョイス！！！</h1>
+      <p>{selectedSubcategory ? `${selectedSubcategory}の中から選んでください` : '中華料理の中から選んでください'}</p>
       <p>残り時間: {timeLeft} 秒</p>
 
-      <ul>
+      <div className="button-container">
         {options.map(option => (
-          <li key={option}>
-            <button onClick={() => handleSelect(option)} disabled={!!selected}>
-              {option}
-            </button>
-          </li>
+          <button
+            key={option}
+            onClick={() => handleSelect(option)}
+            className="category-button"
+          >
+            {option}
+          </button>
         ))}
-      </ul>
+      </div>
 
       {selected && <p>選んだ料理: {selected}</p>}
     </div>

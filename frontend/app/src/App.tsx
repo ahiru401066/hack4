@@ -3,15 +3,21 @@ import SelectionTop from './SelectionTop';
 import Transition1 from './Transition1';
 import Transition2 from './Transition2';
 
+
 function Home() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <h1>チョイス！！</h1>
+    <div className="center-container">
+      <h1 className="category-h1">チョイス！！</h1>
       <p>「今日なにする？」をサクッと決めよう。</p>
-      <button onClick={() => navigate('/selection')}>開始</button>
-    </>
+      <button
+        className="category-button"
+        onClick={() => navigate('/selection')}
+      >
+        開始
+      </button>
+    </div>
   );
 }
 
