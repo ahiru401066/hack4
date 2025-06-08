@@ -53,6 +53,7 @@ const Transition1 = () => {
         <div>
           {childCategories.map((subcategory) => (
             <button
+              className="category-button"
               key={subcategory.id}
               onClick={() => handleSubcategoryClick(subcategory.name)}
             >

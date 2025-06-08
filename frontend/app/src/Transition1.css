@@ -1,0 +1,16 @@
+.category-button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #d0f0ff; /* 薄水色 */
+  color: #006400;            /* 濃い緑 */
+  border: none;
+  border-radius: 12px;       /* 角丸 */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  position:center
+}
+
+.category-button:hover {
+  background-color: #b0e8ff;
+}
