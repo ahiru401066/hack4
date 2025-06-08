@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import './Transition2.css'; 
 
 const Transition2 = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const selectedSubcategory = location.state?.selectedSubcategory as string | undefined;
-
   const [timeLeft, setTimeLeft] = useState(10); // 10秒カウントダウン
   const [selected, setSelected] = useState<string | null>(null);
 
@@ -51,9 +51,15 @@ const Transition2 = () => {
       </div>
 
       {selected && (
-      <p className="selected-result">
-      選んだ料理：<span className="selected-name">{selected}</span>
-      </p>
+        <>
+        <p className="selected-result">
+        選んだ料理：<span className="selected-name">{selected}</span>
+        </p>
+        <button className="home-button"
+          onClick={() => navigate('/')}>
+          ホームに戻る
+        </button>
+      </>
       )}
 
     </div>
