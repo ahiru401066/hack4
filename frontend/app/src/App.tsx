@@ -9,7 +9,8 @@ function Home() {
 
   return (
     <div className="center-container">
-      <h1 className="category-h1">タイパ重視（仮）</h1>
+      <h1 className="category-h1">チョイス！！</h1>
+      <p>「今日なにする？」をサクッと決めよう。</p>
       <button
         className="category-button"
         onClick={() => navigate('/selection')}
