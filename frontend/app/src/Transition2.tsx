@@ -32,7 +32,7 @@ const Transition2 = () => {
 
   return (
     <div>
-      <h1>AIによる提案</h1>
+      <h1>チョイス！！！</h1>
       <p>{selectedSubcategory ? `${selectedSubcategory}の中から選んでください` : '料理の中から選んでください'}</p>
       <p>残り時間: {timeLeft} 秒</p>
 

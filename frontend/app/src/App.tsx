@@ -9,7 +9,7 @@ function Home() {
   return (
     <>
       <h1>チョイス！！</h1>
-      <p>git「今日なにする？」をサクッと決めよう。</p>
+      <p>「今日なにする？」をサクッと決めよう。</p>
       <button onClick={() => navigate('/selection')}>開始</button>
     </>
   );
