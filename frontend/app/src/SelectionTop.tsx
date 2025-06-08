@@ -8,19 +8,26 @@ type Category = {
 
 const SelectionTop = () => {
   const [categories, setCategories] = useState<Category[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const navigate = useNavigate();
 
-  // ダミーデータを設定するためのuseEffect
   useEffect(() => {
-    const dummyData: Category[] = [
-      { id: 1, name: '食事' },
-      { id: 2, name: '映画' },
-      { id: 3, name: '運動' }
-    ];
-    setCategories(dummyData);
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/food-categories/');
+        if (!response.ok) {
+          throw new Error('カテゴリの取得に失敗しました');
+        }
+        const data: Category[] = await response.json();
+        setCategories(data);
+      } catch (err: any) {
+        setError(err.message);
+      }
+    };
+
+    fetchCategories();
   }, []);
 
-  // ボタンがクリックされたときの処理
   const handleClick = (name: string) => {
     navigate('/transition1', { state: { selectedName: name } });
   };
@@ -28,6 +35,7 @@ const SelectionTop = () => {
   return (
     <div>
       <h1>選択画面</h1>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       {categories.map((category) => (
         <button
           key={category.id}
