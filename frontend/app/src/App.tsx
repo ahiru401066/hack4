@@ -8,7 +8,8 @@ function Home() {
 
   return (
     <>
-      <h1>タイパ重視（仮）</h1>
+      <h1>チョイス！！</h1>
+      <p>「今日なにする？」をサクッと決めよう。</p>
       <button onClick={() => navigate('/selection')}>開始</button>
     </>
   );
