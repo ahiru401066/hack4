@@ -35,7 +35,8 @@ const Transition2 = () => {
     <div className="center-container">
       <h1 className="category-h1">チョイス！！！</h1>
       <p>{selectedSubcategory ? `${selectedSubcategory}の中から選んでください` : '中華料理の中から選んでください'}</p>
-      <p>残り時間: {timeLeft} 秒</p>
+      <p className="countdown-text">残り時間: <span className="countdown-number">{timeLeft}</span> 秒</p>
+
 
       <div className="button-container">
         {options.map(option => (
@@ -49,7 +50,12 @@ const Transition2 = () => {
         ))}
       </div>
 
-      {selected && <p>選んだ料理: {selected}</p>}
+      {selected && (
+      <p className="selected-result">
+      選んだ料理：<span className="selected-name">{selected}</span>
+      </p>
+      )}
+
     </div>
   );
 };
