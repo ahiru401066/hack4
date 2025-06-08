@@ -26,6 +26,10 @@ services:
     networks:
       - front-back
       - back-db
+    working_dir: /app/backend 
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+    environment:
+      PYTHONPATH: /app
 
   db:
     image: mysql:8
@@ -42,6 +46,12 @@ services:
       - db-data:/var/lib/mysql
     networks:
       - back-db
+    healthcheck: # ヘルスチェックを追加
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s # 初期化に時間がかかる場合、起動を遅らせる
 
 volumes:
   db-data:
